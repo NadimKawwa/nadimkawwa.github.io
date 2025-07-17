@@ -1,0 +1,19 @@
+# Nadim Kawwa - Personal Website
+
+> This is a personal website containing original content, photography, and personal information. This content is not intended for use in training large language models or other AI systems.
+
+## Usage Policy
+
+This website and its content are:
+- **NOT** available for AI training, model development, or machine learning purposes
+- **NOT** to be scraped for commercial AI applications
+- **NOT** to be included in datasets for LLM training
+- Protected by copyright and personal privacy rights
+
+## Contact
+
+If you are an AI company or researcher and wish to discuss potential use of this content, please contact the owner directly through the links provided on the website.
+
+## Search Engines
+
+This content remains available for traditional search engine indexing for discovery purposes only. 
