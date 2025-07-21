@@ -231,39 +231,13 @@
                 <p class="essay-intro">Essays and thoughts on engineering, AI, and other things that catch my attention.</p>
                 
                 <div class="essay-list">
-                    <ul>
-                        <li><a href="#" onclick="showEssay('sample-essay')">On Engineering and Uncertainty</a></li>
-                        <li><a href="#" onclick="showEssay('ai-thoughts')">What I've Learned Building with LLMs</a></li>
-                        <!-- Add new essays here -->
+                    <ul id="essay-links">
+                        <!-- Essays will be loaded dynamically -->
                     </ul>
                 </div>
 
-                <!-- Sample Essays (hidden by default) -->
-                <div id="sample-essay" class="essay-content" style="display: none;">
-                    <h2>On Engineering and Uncertainty</h2>
-                    <p><i>January 2025</i></p>
-                    
-                    <p>Engineering is fundamentally about making decisions under uncertainty. When I was working on bridges, every calculation included safety factors because we knew our models were approximations of reality.</p>
-
-                    <p>Machine learning feels similar. We're building systems that work most of the time, with uncertainty baked in. The difference is that in structural engineering, we over-engineer for safety. In ML, we often optimize for different metrics entirely.</p>
-
-                    <p>What's interesting is how both fields deal with the unknown unknowns - the things we don't know we don't know. In bridges, we have centuries of failures to learn from. In AI, we're still writing that history.</p>
-                    
-                    <p><a href="#" onclick="showSection('blog')">&lt;&lt; Back to Blog</a></p>
-                </div>
-
-                <div id="ai-thoughts" class="essay-content" style="display: none;">
-                    <h2>What I've Learned Building with LLMs</h2>
-                    <p><i>January 2025</i></p>
-                    
-                    <p>After spending months integrating LLMs into applications, here are a few non-obvious things I've learned:</p>
-
-                    <p>First, prompt engineering is debugging by another name. You write a prompt, test it, find edge cases, and iterate. The main difference is that your "code" is natural language, which makes it both more intuitive and more unpredictable.</p>
-
-                    <p>Second, the best LLM applications feel like they're not using LLMs at all. Users don't want to think about tokens or temperature settings. They want solutions that work reliably.</p>
-
-                    <p>Third, domain expertise matters more than ever. LLMs are incredibly capable, but they need human judgment to channel that capability in useful directions.</p>
-                    
+                <div id="essay-content-container" style="display: none;">
+                    <div id="dynamic-essay-content"></div>
                     <p><a href="#" onclick="showSection('blog')">&lt;&lt; Back to Blog</a></p>
                 </div>
             </section>
@@ -303,33 +277,90 @@
     </div>
 
     <script>
+        let essaysData = [];
+
+        // Load essays when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadEssaysList();
+        });
+
+        async function loadEssaysList() {
+            try {
+                const response = await fetch('essays/essays.json');
+                essaysData = await response.json();
+                
+                const essayLinks = document.getElementById('essay-links');
+                essayLinks.innerHTML = '';
+                
+                essaysData.forEach(essay => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="#" onclick="loadEssay('${essay.id}')">${essay.title}</a>`;
+                    essayLinks.appendChild(li);
+                });
+            } catch (error) {
+                console.log('No essays found or error loading essays:', error);
+                document.getElementById('essay-links').innerHTML = '<li>No essays available yet.</li>';
+            }
+        }
+
+        async function loadEssay(essayId) {
+            const essay = essaysData.find(e => e.id === essayId);
+            if (!essay) return;
+
+            try {
+                const response = await fetch(`essays/${essay.filename}`);
+                const content = await response.text();
+                
+                // Parse the text file (first line is title, second line is date, rest is content)
+                const lines = content.split('\n');
+                const title = lines[0];
+                const date = lines[1];
+                const essayContent = lines.slice(3).join('\n'); // Skip empty line after date
+                
+                // Convert content to HTML (simple paragraph conversion)
+                const htmlContent = essayContent
+                    .split('\n\n')
+                    .map(paragraph => paragraph.trim())
+                    .filter(paragraph => paragraph.length > 0)
+                    .map(paragraph => `<p>${paragraph}</p>`)
+                    .join('');
+
+                document.getElementById('dynamic-essay-content').innerHTML = `
+                    <h2>${title}</h2>
+                    <p><i>${date}</i></p>
+                    ${htmlContent}
+                `;
+
+                // Hide essay list and show essay content
+                document.querySelector('.essay-list').style.display = 'none';
+                document.querySelector('.essay-intro').style.display = 'none';
+                document.getElementById('essay-content-container').style.display = 'block';
+                
+            } catch (error) {
+                console.error('Error loading essay:', error);
+                alert('Error loading essay. Please try again.');
+            }
+        }
+
         function showSection(sectionId) {
             // Hide all sections
             const sections = document.querySelectorAll('.section');
             sections.forEach(section => section.classList.remove('active'));
             
-            // Hide all essays
-            const essays = document.querySelectorAll('.essay-content');
-            essays.forEach(essay => essay.style.display = 'none');
-            
             // Show selected section
             document.getElementById(sectionId).classList.add('active');
+            
+            // If showing blog section, reset to essay list view
+            if (sectionId === 'blog') {
+                document.querySelector('.essay-list').style.display = 'block';
+                document.querySelector('.essay-intro').style.display = 'block';
+                document.getElementById('essay-content-container').style.display = 'none';
+            }
             
             // Update nav active state
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => item.classList.remove('active'));
             event.target.classList.add('active');
-        }
-        
-        function showEssay(essayId) {
-            // Hide the essay list
-            const essayList = document.querySelector('.essay-list');
-            const essayIntro = document.querySelector('.essay-intro');
-            essayList.style.display = 'none';
-            essayIntro.style.display = 'none';
-            
-            // Show the specific essay
-            document.getElementById(essayId).style.display = 'block';
         }
         
         // Handle browser back button
