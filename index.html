@@ -17,192 +17,327 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #fff;
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 10pt;
+            line-height: 1.5;
+            color: #000;
+            background-color: #ffffee;
+            margin: 0;
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            margin: 0;
+            padding: 0;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 40px;
+        /* Navigation styles - Paul Graham inspired */
+        .nav-container {
+            background-color: #9999ff;
+            width: 105px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            overflow-y: auto;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 300;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 0 auto 30px;
+        .nav-item {
             display: block;
-            object-fit: cover;
+            width: 105px;
+            height: 30px;
+            background-color: #9999ff;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid #000;
+            margin: 0;
+            text-decoration: none;
+            color: #000;
+            font-size: 10pt;
+            font-weight: bold;
+            cursor: pointer;
         }
 
-        .content {
-            margin-bottom: 40px;
+        .nav-item:hover,
+        .nav-item.active {
+            background-color: #ffffee;
+        }
+
+        /* Content area */
+        .content-area {
+            margin-left: 105px;
+            padding: 20px;
+            max-width: 600px;
         }
 
         .section {
-            margin-bottom: 40px;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Typography - Paul Graham style */
+        h1 {
+            font-size: 14pt;
+            font-weight: bold;
+            margin: 0 0 20px 0;
+            color: #000;
         }
 
         h2 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #333;
+            font-size: 12pt;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+            color: #000;
+        }
+
+        h3 {
+            font-size: 10pt;
+            font-weight: bold;
+            margin: 15px 0 8px 0;
+            color: #000;
         }
 
         p {
-            margin-bottom: 15px;
-            font-size: 1rem;
-            line-height: 1.7;
+            margin: 0 0 15px 0;
+            font-size: 10pt;
+            line-height: 1.5;
         }
 
+        /* Links */
+        a {
+            color: #0000ff;
+            text-decoration: underline;
+        }
+
+        a:visited {
+            color: #551a8b;
+        }
+
+        a:hover {
+            color: #ff0000;
+        }
+
+        /* Blog/Essays specific styles */
+        .essay-list {
+            margin: 20px 0;
+        }
+
+        .essay-list ul {
+            list-style: disc;
+            margin-left: 25px;
+        }
+
+        .essay-list li {
+            margin: 8px 0;
+        }
+
+        .essay-intro {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Profile image for home section */
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 0 20px 0;
+            object-fit: cover;
+        }
+
+        /* Education items */
         .education-item {
-            margin-bottom: 25px;
-        }
-
-        .education-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            color: #333;
-        }
-
-        .education-item .degree {
-            font-weight: 600;
-            color: #555;
-        }
-
-        .interests-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .interests-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        .interests-column ul {
-            list-style: none;
-        }
-
-        .interests-column li {
-            padding: 5px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .interests-column li:last-child {
-            border-bottom: none;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            border-top: 1px solid #eee;
-            margin-top: 60px;
-        }
-
-        .social-links {
             margin-bottom: 20px;
         }
 
-        .social-links a {
-            display: inline-block;
-            margin: 0 15px;
+        .education-item .degree {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+            font-size: 9pt;
             color: #666;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.3s ease;
         }
 
-        .social-links a:hover {
-            color: #333;
+        .social-links a {
+            color: #0000ff;
+            margin-right: 15px;
         }
 
-        .copyright {
-            color: #999;
-            font-size: 0.9rem;
-        }
-
+        /* Responsive */
         @media (max-width: 600px) {
-            .interests-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .nav-container {
+                position: relative;
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
             }
-            
-            h1 {
-                font-size: 2rem;
+
+            .nav-item {
+                width: 80px;
+                height: 25px;
+                line-height: 25px;
+                font-size: 9pt;
             }
-            
+
+            .content-area {
+                margin-left: 0;
+                padding: 15px;
+            }
+
             .profile-image {
-                width: 150px;
-                height: 150px;
+                width: 120px;
+                height: 120px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <img src="images/PortraitPhoto_NadimKawwa.jpeg" alt="Nadim Kawwa" class="profile-image">
-            <h1>Nadim Kawwa</h1>
-            <!-- <p class="subtitle">Welcome!</p>
-        </header> -->
+        <!-- Navigation -->
+        <nav class="nav-container">
+            <a href="#" class="nav-item active" onclick="showSection('home')">Home</a>
+            <a href="#" class="nav-item" onclick="showSection('blog')">Blog</a>
+            <a href="#" class="nav-item" onclick="showSection('about')">About</a>
+            <a href="#" class="nav-item" onclick="showSection('contact')">Contact</a>
+        </nav>
 
-        <main class="content">
-            <section class="section">
-                <h2>About Me</h2>
-                <p>Welcome to my corner of the internet! I'm an engineer who practices data science and machine learning. My interests are amorphous problems, natural language processing, and integrating LLMs into useful applications.
-					 </p>
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Home Section -->
+            <section id="home" class="section active">
+                <img src="images/PortraitPhoto_NadimKawwa.jpeg" alt="Nadim Kawwa" class="profile-image">
+                <h1>Nadim Kawwa</h1>
+                <p>Welcome to my corner of the internet! I'm an engineer who practices data science and machine learning. My interests are amorphous problems, natural language processing, and integrating LLMs into useful applications.</p>
+                
                 <p>My background in bridge engineering means I have a sense for scale and its challenges. My favorite bridge to work on was the <a href="https://www.samueldechamplainbridge.ca/" target="_blank">Pont Samuel de Champlain</a> in Montréal, Québec.</p>
+
+                <p>Sometimes I'll apply AI to my hobbies, like imitating <a href="https://github.com/NadimKawwa/DOTAWardFinder" target="_blank">how the pros place vision in DOTA2</a> (I'm still mediocre at it).</p>
             </section>
 
-            <section class="section">
+            <!-- Blog Section -->
+            <section id="blog" class="section">
+                <h1>Blog</h1>
+                <p class="essay-intro">Essays and thoughts on engineering, AI, and other things that catch my attention.</p>
+                
+                <div class="essay-list">
+                    <ul>
+                        <li><a href="#" onclick="showEssay('sample-essay')">On Engineering and Uncertainty</a></li>
+                        <li><a href="#" onclick="showEssay('ai-thoughts')">What I've Learned Building with LLMs</a></li>
+                        <!-- Add new essays here -->
+                    </ul>
+                </div>
+
+                <!-- Sample Essays (hidden by default) -->
+                <div id="sample-essay" class="essay-content" style="display: none;">
+                    <h2>On Engineering and Uncertainty</h2>
+                    <p><i>January 2025</i></p>
+                    
+                    <p>Engineering is fundamentally about making decisions under uncertainty. When I was working on bridges, every calculation included safety factors because we knew our models were approximations of reality.</p>
+
+                    <p>Machine learning feels similar. We're building systems that work most of the time, with uncertainty baked in. The difference is that in structural engineering, we over-engineer for safety. In ML, we often optimize for different metrics entirely.</p>
+
+                    <p>What's interesting is how both fields deal with the unknown unknowns - the things we don't know we don't know. In bridges, we have centuries of failures to learn from. In AI, we're still writing that history.</p>
+                    
+                    <p><a href="#" onclick="showSection('blog')">&lt;&lt; Back to Blog</a></p>
+                </div>
+
+                <div id="ai-thoughts" class="essay-content" style="display: none;">
+                    <h2>What I've Learned Building with LLMs</h2>
+                    <p><i>January 2025</i></p>
+                    
+                    <p>After spending months integrating LLMs into applications, here are a few non-obvious things I've learned:</p>
+
+                    <p>First, prompt engineering is debugging by another name. You write a prompt, test it, find edge cases, and iterate. The main difference is that your "code" is natural language, which makes it both more intuitive and more unpredictable.</p>
+
+                    <p>Second, the best LLM applications feel like they're not using LLMs at all. Users don't want to think about tokens or temperature settings. They want solutions that work reliably.</p>
+
+                    <p>Third, domain expertise matters more than ever. LLMs are incredibly capable, but they need human judgment to channel that capability in useful directions.</p>
+                    
+                    <p><a href="#" onclick="showSection('blog')">&lt;&lt; Back to Blog</a></p>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="section">
+                <h1>About</h1>
+                
                 <h2>Education</h2>
                 <div class="education-item">
-                    <h3>University of California Berkeley</h3>
-                    <p class="degree">Masters in Structural Engineering, Mechanics, and Materials</p>
+                    <p class="degree">University of California Berkeley</p>
+                    <p>Masters in Structural Engineering, Mechanics, and Materials</p>
                 </div>
                 <div class="education-item">
-                    <h3>American University of Beirut</h3>
-                    <p class="degree">Bachelors in Civil and Environmental Engineering</p>
+                    <p class="degree">American University of Beirut</p>
+                    <p>Bachelors in Civil and Environmental Engineering</p>
+                </div>
+
+                <h2>Current Focus</h2>
+                <p>Data science, machine learning, and natural language processing. I'm particularly interested in how LLMs can be integrated into practical applications without the usual hype.</p>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <h1>Contact</h1>
+                <p>You can find me at:</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/nadimkawwa/" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/NadimKawwa" target="_blank">GitHub</a>
                 </div>
             </section>
 
-            <section class="section">
-                <h2>Interests</h2>
-                <p>Sometimes I'll apply AI to my hobbies, like imitating <a href="https://github.com/NadimKawwa/DOTAWardFinder" target="_blank">how the pros place vision in DOTA2</a> (I'm still mediocre at it)</p>
-            </section>
-        </main>
-
-        <footer>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/nadimkawwa/" target="_blank">LinkedIn</a>
-                <a href="https://github.com/NadimKawwa" target="_blank">GitHub</a>
-                <!-- <a href="mailto:your-email@example.com">Email</a> -->
+            <div class="footer">
+                <p>© 2025 Nadim Kawwa. All rights reserved.</p>
             </div>
-            <p class="copyright">© 2025 Nadim Kawwa. All rights reserved.</p>
-        </footer>
+        </div>
     </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Hide all essays
+            const essays = document.querySelectorAll('.essay-content');
+            essays.forEach(essay => essay.style.display = 'none');
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update nav active state
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+        
+        function showEssay(essayId) {
+            // Hide the essay list
+            const essayList = document.querySelector('.essay-list');
+            const essayIntro = document.querySelector('.essay-intro');
+            essayList.style.display = 'none';
+            essayIntro.style.display = 'none';
+            
+            // Show the specific essay
+            document.getElementById(essayId).style.display = 'block';
+        }
+        
+        // Handle browser back button
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.section) {
+                showSection(event.state.section);
+            }
+        });
+    </script>
 </body>
 </html>
