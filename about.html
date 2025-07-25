@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nadim Kawwa</title>
+    <title>Nadim Kawwa - About</title>
     
     <!-- Block AI training while allowing search engines -->
     <meta name="robots" content="index, follow, noai, noimageai">
@@ -54,6 +54,7 @@
             color: #000;
             font-size: 10pt;
             font-weight: bold;
+            cursor: pointer;
         }
 
         .nav-item:hover,
@@ -68,10 +69,6 @@
             max-width: 600px;
         }
 
-        .section {
-            display: block;
-        }
-
         /* Typography - Paul Graham style */
         h1 {
             font-size: 14pt;
@@ -84,13 +81,6 @@
             font-size: 12pt;
             font-weight: bold;
             margin: 20px 0 10px 0;
-            color: #000;
-        }
-
-        h3 {
-            font-size: 10pt;
-            font-weight: bold;
-            margin: 15px 0 8px 0;
             color: #000;
         }
 
@@ -114,35 +104,6 @@
             color: #ff0000;
         }
 
-        /* Blog/Essays specific styles */
-        .essay-list {
-            margin: 20px 0;
-        }
-
-        .essay-list ul {
-            list-style: disc;
-            margin-left: 25px;
-        }
-
-        .essay-list li {
-            margin: 8px 0;
-        }
-
-        .essay-intro {
-            font-style: italic;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        /* Profile image for home section */
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 0 20px 0;
-            object-fit: cover;
-        }
-
         /* Education items */
         .education-item {
             margin-bottom: 20px;
@@ -160,11 +121,6 @@
             border-top: 1px solid #ccc;
             font-size: 9pt;
             color: #666;
-        }
-
-        .social-links a {
-            color: #0000ff;
-            margin-right: 15px;
         }
 
         /* Responsive */
@@ -189,11 +145,6 @@
                 margin-left: 0;
                 padding: 15px;
             }
-
-            .profile-image {
-                width: 120px;
-                height: 120px;
-            }
         }
     </style>
 </head>
@@ -201,23 +152,30 @@
     <div class="container">
         <!-- Navigation -->
         <nav class="nav-container">
-            <a href="index.html" class="nav-item active">Home</a>
+            <a href="index.html" class="nav-item">Home</a>
             <a href="blog.html" class="nav-item">Blog</a>
-            <a href="about.html" class="nav-item">About</a>
+            <a href="about.html" class="nav-item active">About</a>
             <a href="contact.html" class="nav-item">Contact</a>
         </nav>
 
         <!-- Content Area -->
         <div class="content-area">
-            <!-- Home Section -->
-            <section id="home" class="section">
-                <img src="images/PortraitPhoto_NadimKawwa.jpeg" alt="Nadim Kawwa" class="profile-image">
-                <h1>Nadim Kawwa</h1>
-                <p>Welcome to my corner of the internet! I'm an engineer who practices data science and machine learning. My interests are amorphous problems, natural language processing, and integrating LLMs into useful applications.</p>
+            <!-- About Section -->
+            <section id="about">
+                <h1>About</h1>
                 
-                <p>My background in bridge engineering means I have a sense for scale and its challenges. My favorite bridge to work on was the <a href="https://www.samueldechamplainbridge.ca/" target="_blank">Pont Samuel de Champlain</a> in Montréal, Québec.</p>
+                <h2>Education</h2>
+                <div class="education-item">
+                    <p class="degree">University of California Berkeley</p>
+                    <p>Masters in Structural Engineering, Mechanics, and Materials</p>
+                </div>
+                <div class="education-item">
+                    <p class="degree">American University of Beirut</p>
+                    <p>Bachelors in Civil and Environmental Engineering</p>
+                </div>
 
-                <p>Sometimes I'll apply AI to my hobbies, like imitating <a href="https://github.com/NadimKawwa/DOTAWardFinder" target="_blank">how the pros place vision in DOTA2</a> (I'm still mediocre at it).</p>
+                <h2>Current Focus</h2>
+                <p>Data science, machine learning, and natural language processing. I'm particularly interested in how LLMs can be integrated into practical applications without the usual hype.</p>
             </section>
 
             <div class="footer">
@@ -226,4 +184,4 @@
         </div>
     </div>
 </body>
-</html>
+</html> 

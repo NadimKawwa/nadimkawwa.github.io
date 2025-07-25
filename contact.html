@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nadim Kawwa</title>
+    <title>Nadim Kawwa - Contact</title>
     
     <!-- Block AI training while allowing search engines -->
     <meta name="robots" content="index, follow, noai, noimageai">
@@ -54,6 +54,7 @@
             color: #000;
             font-size: 10pt;
             font-weight: bold;
+            cursor: pointer;
         }
 
         .nav-item:hover,
@@ -68,29 +69,11 @@
             max-width: 600px;
         }
 
-        .section {
-            display: block;
-        }
-
         /* Typography - Paul Graham style */
         h1 {
             font-size: 14pt;
             font-weight: bold;
             margin: 0 0 20px 0;
-            color: #000;
-        }
-
-        h2 {
-            font-size: 12pt;
-            font-weight: bold;
-            margin: 20px 0 10px 0;
-            color: #000;
-        }
-
-        h3 {
-            font-size: 10pt;
-            font-weight: bold;
-            margin: 15px 0 8px 0;
             color: #000;
         }
 
@@ -112,45 +95,6 @@
 
         a:hover {
             color: #ff0000;
-        }
-
-        /* Blog/Essays specific styles */
-        .essay-list {
-            margin: 20px 0;
-        }
-
-        .essay-list ul {
-            list-style: disc;
-            margin-left: 25px;
-        }
-
-        .essay-list li {
-            margin: 8px 0;
-        }
-
-        .essay-intro {
-            font-style: italic;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        /* Profile image for home section */
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 0 20px 0;
-            object-fit: cover;
-        }
-
-        /* Education items */
-        .education-item {
-            margin-bottom: 20px;
-        }
-
-        .education-item .degree {
-            font-weight: bold;
-            margin-bottom: 5px;
         }
 
         /* Footer */
@@ -189,11 +133,6 @@
                 margin-left: 0;
                 padding: 15px;
             }
-
-            .profile-image {
-                width: 120px;
-                height: 120px;
-            }
         }
     </style>
 </head>
@@ -201,23 +140,22 @@
     <div class="container">
         <!-- Navigation -->
         <nav class="nav-container">
-            <a href="index.html" class="nav-item active">Home</a>
+            <a href="index.html" class="nav-item">Home</a>
             <a href="blog.html" class="nav-item">Blog</a>
             <a href="about.html" class="nav-item">About</a>
-            <a href="contact.html" class="nav-item">Contact</a>
+            <a href="contact.html" class="nav-item active">Contact</a>
         </nav>
 
         <!-- Content Area -->
         <div class="content-area">
-            <!-- Home Section -->
-            <section id="home" class="section">
-                <img src="images/PortraitPhoto_NadimKawwa.jpeg" alt="Nadim Kawwa" class="profile-image">
-                <h1>Nadim Kawwa</h1>
-                <p>Welcome to my corner of the internet! I'm an engineer who practices data science and machine learning. My interests are amorphous problems, natural language processing, and integrating LLMs into useful applications.</p>
-                
-                <p>My background in bridge engineering means I have a sense for scale and its challenges. My favorite bridge to work on was the <a href="https://www.samueldechamplainbridge.ca/" target="_blank">Pont Samuel de Champlain</a> in Montréal, Québec.</p>
-
-                <p>Sometimes I'll apply AI to my hobbies, like imitating <a href="https://github.com/NadimKawwa/DOTAWardFinder" target="_blank">how the pros place vision in DOTA2</a> (I'm still mediocre at it).</p>
+            <!-- Contact Section -->
+            <section id="contact">
+                <h1>Contact</h1>
+                <p>You can find me at:</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/nadimkawwa/" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/NadimKawwa" target="_blank">GitHub</a>
+                </div>
             </section>
 
             <div class="footer">
@@ -226,4 +164,4 @@
         </div>
     </div>
 </body>
-</html>
+</html> 
